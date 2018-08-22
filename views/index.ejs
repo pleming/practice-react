@@ -11,13 +11,13 @@
         class HelloComponent extends React.Component {
             render() {
                 return (
-                    <p>Hello World</p>
+                    <p>Hello {this.props.target}</p>
                 );
             }
         }
 
         ReactDOM.render(
-            <HelloComponent/>,
+            <HelloComponent target="World"/>,
             document.querySelector("#container")
         );
     </script>
