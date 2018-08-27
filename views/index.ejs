@@ -23,7 +23,7 @@
         class LabelComponent extends React.Component {
             render() {
                 return (
-                    <DisplayComponent color={this.props.color} num={this.props.num} size={this.props.size}/>
+                    <DisplayComponent {...this.props}/>
                 )
             }
         }
@@ -31,7 +31,7 @@
         class ShirtComponent extends React.Component {
             render() {
                 return (
-                    <LabelComponent color={this.props.color} num={this.props.num} size={this.props.size}/>
+                    <LabelComponent {...this.props}/>
                 );
             }
         }
