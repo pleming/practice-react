@@ -1,11 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hello React</title>
-  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <title>Hello React</title>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+    <script type="text/babel">
+        class DisplayComponent extends React.Component {
+            render() {
+                return (
+                    <div>
+                        <p>{this.props.color}</p>
+                        <p>{this.props.num}</p>
+                        <p>{this.props.size}</p>
+                    </div>
+                )
+            }
+        }
+
+        class LabelComponent extends React.Component {
+            render() {
+                return (
+                    <DisplayComponent color={this.props.color} num={this.props.num} size={this.props.size}/>
+                )
+            }
+        }
+
+        class ShirtComponent extends React.Component {
+            render() {
+                return (
+                    <LabelComponent color={this.props.color} num={this.props.num} size={this.props.size}/>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <div>
+                <ShirtComponent color="steelblue" num="3.14" size="medium"/>
+            </div>,
+            document.querySelector("#container")
+        );
+    </script>
 </head>
 <body>
+<div id="container"></div>
 </body>
 </html>
