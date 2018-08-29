@@ -16,6 +16,14 @@
                 };
             }
 
+            componentDidMount() {
+                setInterval(function () {
+                    this.setState({
+                        strikes: this.state.strikes + 100
+                    });
+                }, 1000);
+            }
+
             render() {
                 return (
                     <h1>{this.state.strikes}</h1>
