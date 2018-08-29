@@ -14,14 +14,28 @@
                 this.state = {
                     strikes: 0
                 };
+
+                // Solution.01 : binding this to timerTick method
+                this.timerTick = this.timerTick.bind(this);
             }
 
             componentDidMount() {
-                setInterval(function () {
+                // Solution.01 : binding this to timerTick method
+                setInterval(this.timerTick, 1000);
+
+                // Solution.02 : binding this to timerTick method
+                setInterval((function() {
                     this.setState({
                         strikes: this.state.strikes + 100
                     });
-                }, 1000);
+                }).bind(this), 1000);
+            }
+
+            // Solution.01 : binding this to timerTick method
+            timerTick() {
+                this.setState({
+                    strikes: this.state.strikes + 100
+                });
             }
 
             render() {
