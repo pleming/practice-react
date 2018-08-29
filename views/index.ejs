@@ -1,11 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hello React</title>
-  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <title>Hello React</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+    <script type="text/babel">
+        class LightningCounterComponent extends React.Component {
+            constructor(props) {
+                super(props);
+
+                this.state = {
+                    strikes: 0
+                };
+
+                // Solution.01 : binding this to timerTick method
+                this.timerTick = this.timerTick.bind(this);
+            }
+
+            componentDidMount() {
+                // Solution.01 : binding this to timerTick method
+                setInterval(this.timerTick, 1000);
+
+                // Solution.02 : binding this to timerTick method
+                setInterval((function() {
+                    this.setState({
+                        strikes: this.state.strikes + 100
+                    });
+                }).bind(this), 1000);
+            }
+
+            // Solution.01 : binding this to timerTick method
+            timerTick() {
+                this.setState({
+                    strikes: this.state.strikes + 100
+                });
+            }
+
+            render() {
+                return (
+                    <h1>{this.state.strikes}</h1>
+                );
+            }
+        }
+
+        class LightningDisplayComponent extends React.Component {
+            render() {
+                var divStyle = {
+                    width: 250,
+                    textAlign: "center",
+                    backgroundColor: "black",
+                    padding: 40,
+                    fontFamily: "sans-serif",
+                    color: "#999",
+                    borderRadius: 10
+                };
+
+                return (
+                    <div style={divStyle}>
+                        <LightningCounterComponent/>
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <div>
+                <LightningDisplayComponent/>
+            </div>,
+            document.querySelector("#container")
+        );
+    </script>
 </head>
 <body>
+<div id="container"></div>
 </body>
 </html>
