@@ -37,25 +37,22 @@
                     padding: 50,
                     backgroundColor: "#FFF"
                 };
+
+                this.colors = ["#393E41", "#E94F37", "#1C89BF", "#A1D363"];
+                this.renderDataList = [];
+
+                this.generateCircleComponent();
             }
 
-            generateRandomColorCircleComponent() {
-                var colors = ["#393E41", "#E94F37", "#1C89BF", "#A1D363"];
-                var randColorIdx = Math.floor(Math.random() * colors.length);
-
-                return (
-                    <CircleComponent bgColor={colors[randColorIdx]}/>
-                );
+            generateCircleComponent() {
+                for (var i = 0; i < this.colors.length; i++)
+                    this.renderDataList.push(<CircleComponent bgColor={this.colors[i]}/>);
             };
 
             render() {
                 return (
                     <div style={this.containerStyle}>
-                        {this.generateRandomColorCircleComponent()}
-                        {this.generateRandomColorCircleComponent()}
-                        {this.generateRandomColorCircleComponent()}
-                        {this.generateRandomColorCircleComponent()}
-                        {this.generateRandomColorCircleComponent()}
+                        {this.renderDataList}
                     </div>
                 );
             }
