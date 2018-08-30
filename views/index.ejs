@@ -8,8 +8,10 @@
 
     <script type="text/babel">
         class CircleComponent extends React.Component {
-            render() {
-                var circleStyle = {
+            constructor(props) {
+                super(props);
+
+                this.circleStyle = {
                     display: "inline-block",
                     margin: 20,
                     padding: 10,
@@ -18,23 +20,38 @@
                     borderRadius: "50%",
                     backgroundColor: this.props.bgColor
                 };
+            }
 
+            render() {
                 return (
-                    <div style={circleStyle}></div>
+                    <div style={this.circleStyle}></div>
                 );
             }
         }
 
         class ContainerComponent extends React.Component {
-            render() {
-                var containerStyle = {
+            constructor(props) {
+                super(props);
+
+                this.containerStyle = {
                     padding: 50,
                     backgroundColor: "#FFF"
                 };
+            }
+
+            generateRandomColorCircleComponent() {
+                var colors = ["#393E41", "#E94F37", "#1C89BF", "#A1D363"];
+                var randColorIdx = Math.floor(Math.random() * colors.length);
 
                 return (
-                    <div style={containerStyle}>
-                        <CircleComponent bgColor="#F9C240"/>
+                    <CircleComponent bgColor={colors[randColorIdx]}/>
+                );
+            };
+
+            render() {
+                return (
+                    <div style={this.containerStyle}>
+                        {this.generateRandomColorCircleComponent()}
                     </div>
                 );
             }
