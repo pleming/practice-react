@@ -1,11 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hello React</title>
-  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <title>Hello React</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+    <script type="text/babel">
+        class CircleComponent extends React.Component {
+            render() {
+                var circleStyle = {
+                    display: "inline-block",
+                    margin: 20,
+                    padding: 10,
+                    width: 100,
+                    height: 100,
+                    borderRadius: "50%",
+                    backgroundColor: this.props.bgColor
+                };
+
+                return (
+                    <div style={circleStyle}></div>
+                );
+            }
+        }
+
+        class ContainerComponent extends React.Component {
+            render() {
+                var containerStyle = {
+                    padding: 50,
+                    backgroundColor: "#FFF"
+                };
+
+                return (
+                    <div style={containerStyle}>
+                        <CircleComponent bgColor="#F9C240"/>
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <ContainerComponent/>,
+            document.querySelector("#container")
+        );
+    </script>
 </head>
 <body>
+<div id="container"></div>
 </body>
 </html>
