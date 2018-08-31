@@ -29,13 +29,25 @@
                     lineHeight: "3px",
                     color: "#333"
                 };
+
+                this.state = {
+                    count: 0
+                };
+
+                this.increase = this.increase.bind(this);
+            }
+
+            increase(e) {
+                this.setState({
+                    count: this.state.count + 1
+                });
             }
 
             render() {
                 return (
                     <div style={this.backgroundStyle}>
-                        <CounterComponent/>
-                        <button style={this.buttonStyle}>+</button>
+                        <CounterComponent display={this.state.count}/>
+                        <button onClick={this.increase} style={this.buttonStyle}>+</button>
                     </div>
                 );
             }
@@ -56,7 +68,7 @@
             render() {
                 return (
                     <div style={this.textStyle}>
-                        0
+                        {this.props.display}
                     </div>
                 );
             }
