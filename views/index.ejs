@@ -1,11 +1,95 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hello React</title>
-  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <title>Hello React</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+    <script type="text/babel">
+        class CounterBoxComponent extends React.Component {
+            constructor(props) {
+                super(props);
+
+                this.backgroundStyle = {
+                    padding: 50,
+                    width: 250,
+                    height: 100,
+                    borderRadius: 10,
+                    backgroundColor: "#FFC53A",
+                    textAlign: "center"
+                };
+
+                this.buttonStyle = {
+                    width: 30,
+                    height: 30,
+                    fontFamily: "sans-serif",
+                    fontSize: "1em",
+                    fontWeight: "bold",
+                    lineHeight: "3px",
+                    color: "#333"
+                };
+            }
+
+            render() {
+                return (
+                    <div style={this.backgroundStyle}>
+                        <CounterComponent/>
+                        <button style={this.buttonStyle}>+</button>
+                    </div>
+                );
+            }
+        }
+
+        class CounterComponent extends React.Component {
+            constructor(props) {
+                super(props);
+
+                this.textStyle = {
+                    fontFamily: "sans-serif",
+                    fontWeight: "bold",
+                    fontSize: 72,
+                    color: "#333"
+                };
+            }
+
+            render() {
+                return (
+                    <div style={this.textStyle}>
+                        0
+                    </div>
+                );
+            }
+        }
+
+        class ContainerComponent extends React.Component {
+            constructor(props) {
+                super(props);
+
+                this.containerStyle = {
+                    padding: 50,
+                    backgroundColor: "#FFF"
+                };
+            }
+
+            render() {
+                return (
+                    <div style={this.containerStyle}>
+                        <CounterBoxComponent/>
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <div>
+                <ContainerComponent/>
+            </div>,
+            document.querySelector("#container")
+        )
+    </script>
 </head>
 <body>
+<div id="container"></div>
 </body>
 </html>
