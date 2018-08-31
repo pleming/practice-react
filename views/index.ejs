@@ -20,16 +20,6 @@
                     textAlign: "center"
                 };
 
-                this.buttonStyle = {
-                    width: 30,
-                    height: 30,
-                    fontFamily: "sans-serif",
-                    fontSize: "1em",
-                    fontWeight: "bold",
-                    lineHeight: "3px",
-                    color: "#333"
-                };
-
                 this.state = {
                     count: 0
                 };
@@ -54,7 +44,7 @@
                 return (
                     <div style={this.backgroundStyle}>
                         <CounterComponent display={this.state.count}/>
-                        <button onClick={this.increase} style={this.buttonStyle}>+</button>
+                        <CounterButtonComponent onClick={this.increase}/>
                     </div>
                 );
             }
@@ -77,6 +67,28 @@
                     <div style={this.textStyle}>
                         {this.props.display}
                     </div>
+                );
+            }
+        }
+
+        class CounterButtonComponent extends React.Component {
+            constructor(props) {
+                super(props);
+
+                this.buttonStyle = {
+                    width: 30,
+                    height: 30,
+                    fontFamily: "sans-serif",
+                    fontSize: "1em",
+                    fontWeight: "bold",
+                    lineHeight: "3px",
+                    color: "#333"
+                };
+            }
+
+            render() {
+                return (
+                    <button style={this.buttonStyle}>+</button>
                 );
             }
         }
