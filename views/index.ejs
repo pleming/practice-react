@@ -54,7 +54,7 @@
             render() {
                 return (
                     <form onSubmit={this.props.setNewColorHandler}>
-                        <input placeholder="Enter a color value" style={this.inputStyle} onChange={this.props.changeHandler}/>
+                        <input ref={this.props.colorInput} placeholder="Enter a color value" style={this.inputStyle} onChange={this.props.changeHandler}/>
                         <button type="submit" style={this.buttonStyle}>go</button>
                     </form>
                 );
@@ -69,6 +69,8 @@
                     bgColor: "#FFF",
                     color: "#FFF"
                 }
+
+                this.colorInput = React.createRef();
 
                 this.changeColor = this.changeColor.bind(this)
                 this.setNewColor = this.setNewColor.bind(this)
@@ -86,13 +88,16 @@
                 this.setState({
                     bgColor: this.state.color
                 });
+
+                this.colorInput.current.value = "";
+                this.colorInput.current.focus();
             }
 
             render() {
                 return (
                     <div>
                         <PaletteComponent bgColor={this.state.bgColor}/>
-                        <ColorSelectComponent setNewColorHandler={this.setNewColor} changeHandler={this.changeColor}/>
+                        <ColorSelectComponent colorInput={this.colorInput} setNewColorHandler={this.setNewColor} changeHandler={this.changeColor}/>
                     </div>
                 );
             }
