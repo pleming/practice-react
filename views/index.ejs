@@ -8,6 +8,36 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router-dom/4.3.1/react-router-dom.min.js"></script>
 
     <script type="text/babel">
+        class HomeComponent extends React.Component {
+            render() {
+                return (
+                    <div>
+                        <h2>Hello</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis facilisis dui a elementum
+                            iaculis. Nam consequat mi vitae mi convallis, a eleifend nibh vulputate. Praesent non leo
+                            eros. Vivamus porta, ligula ac placerat vestibulum, risus eros facilisis libero, nec sodales
+                            quam eros eu orci. Mauris vehicula urna eget enim fringilla, eu pretium mauris molestie.
+                            Nulla gravida molestie condimentum. Mauris mollis accumsan justo, in hendrerit enim
+                            scelerisque sit amet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+                            posuere cubilia Curae; Nulla elementum suscipit feugiat.
+                        </p>
+
+                        <p>
+                            Aliquam dignissim finibus cursus. Phasellus in fermentum erat. Quisque varius arcu sit amet
+                            quam tempor ornare. Suspendisse scelerisque odio a mi posuere tempus. Vivamus vitae magna
+                            vulputate quam fringilla mollis sit amet ut dolor. Vivamus leo purus, ultrices quis dolor
+                            vitae, iaculis lacinia tortor. Nunc ante ligula, suscipit sit amet vehicula eget, efficitur
+                            quis ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras volutpat lorem sit
+                            amet est euismod vehicula. Nunc et diam quis justo venenatis bibendum. Nullam feugiat odio
+                            ac ligula rutrum, sit amet tristique dui tempus. Sed at leo ut ligula ornare placerat nec
+                            eget neque.
+                        </p>
+                    </div>
+                );
+            }
+        }
+
         class AppFrameComponent extends React.Component {
             render() {
                 return (
@@ -19,6 +49,7 @@
                             <li>Contact</li>
                         </ul>
                         <div className="content">
+                            <HomeComponent/>
                         </div>
                     </div>
                 );
