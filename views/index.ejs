@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/index.css"/>
 
     <script type="text/babel">
-        var {BrowserRouter, Route, Link} = ReactRouterDOM;
+        var {BrowserRouter, Route, NavLink} = ReactRouterDOM;
 
         class HomeComponent extends React.Component {
             render() {
@@ -77,9 +77,9 @@
                     <div>
                         <h1>Simple SPA</h1>
                         <ul className="header">
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to="/stuff">Stuff</Link></li>
-                            <li><Link to="/contact">Contact</Link></li>
+                            <li><NavLink exact to="/" activeClassName="active">Home</NavLink></li>
+                            <li><NavLink to="/stuff" activeClassName="active">Stuff</NavLink></li>
+                            <li><NavLink to="/contact" activeClassName="active">Contact</NavLink></li>
                         </ul>
                     </div>
                 );
