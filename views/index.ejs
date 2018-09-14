@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="css/index.css"/>
 
     <script type="text/babel">
-        var { BrowserRouter, Route } = ReactRouterDOM;
+        var {BrowserRouter, Route} = ReactRouterDOM;
 
         class HomeComponent extends React.Component {
             render() {
                 return (
-                    <div>
+                    <div className="content">
                         <h2>Hello</h2>
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis facilisis dui a elementum
@@ -42,7 +42,7 @@
             }
         }
 
-        class AppFrameComponent extends React.Component {
+        class HeaderComponent extends React.Component {
             render() {
                 return (
                     <div>
@@ -52,20 +52,26 @@
                             <li>Stuff</li>
                             <li>Contact</li>
                         </ul>
-                        <div className="content">
-                            <HomeComponent/>
-                        </div>
                     </div>
                 );
             }
         }
 
+        class AppFrameComponent extends React.Component {
+            render() {
+                return (
+                    <BrowserRouter>
+                        <div>
+                            <HeaderComponent/>
+                            <Route exact path="/" component={HomeComponent}/>
+                        </div>
+                    </BrowserRouter>
+                );
+            }
+        }
+
         ReactDOM.render(
-            <BrowserRouter>
-                <div>
-                    <Route path="/" component={AppFrameComponent}></Route>
-                </div>
-            </BrowserRouter>,
+            <AppFrameComponent/>,
             document.querySelector("#container")
         );
     </script>
