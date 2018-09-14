@@ -1,11 +1,113 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hello React</title>
-  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <title>Hello React</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router-dom/4.3.1/react-router-dom.min.js"></script>
+
+    <link rel="stylesheet" href="css/index.css"/>
+
+    <script type="text/babel">
+        var {BrowserRouter, Route, NavLink} = ReactRouterDOM;
+
+        class HomeComponent extends React.Component {
+            render() {
+                return (
+                    <div className="content">
+                        <h2>Hello</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis facilisis dui a elementum
+                            iaculis. Nam consequat mi vitae mi convallis, a eleifend nibh vulputate. Praesent non leo
+                            eros. Vivamus porta, ligula ac placerat vestibulum, risus eros facilisis libero, nec sodales
+                            quam eros eu orci. Mauris vehicula urna eget enim fringilla, eu pretium mauris molestie.
+                            Nulla gravida molestie condimentum. Mauris mollis accumsan justo, in hendrerit enim
+                            scelerisque sit amet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+                            posuere cubilia Curae; Nulla elementum suscipit feugiat.
+                        </p>
+
+                        <p>
+                            Aliquam dignissim finibus cursus. Phasellus in fermentum erat. Quisque varius arcu sit amet
+                            quam tempor ornare. Suspendisse scelerisque odio a mi posuere tempus. Vivamus vitae magna
+                            vulputate quam fringilla mollis sit amet ut dolor. Vivamus leo purus, ultrices quis dolor
+                            vitae, iaculis lacinia tortor. Nunc ante ligula, suscipit sit amet vehicula eget, efficitur
+                            quis ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras volutpat lorem sit
+                            amet est euismod vehicula. Nunc et diam quis justo venenatis bibendum. Nullam feugiat odio
+                            ac ligula rutrum, sit amet tristique dui tempus. Sed at leo ut ligula ornare placerat nec
+                            eget neque.
+                        </p>
+                    </div>
+                );
+            }
+        }
+
+        class StuffComponent extends React.Component {
+            render() {
+                return (
+                    <div className="content">
+                        <h2>STUFF</h2>
+                        <p>Mauris sem velit, vehicula eget sodales vitae, rhoncus eget sapien:</p>
+                        <ol>
+                            <li>Nulla pulvinar diam</li>
+                            <li>Facilisis bibendum</li>
+                            <li>Verstibulum vulputate</li>
+                            <li>Eget erat</li>
+                            <li>Id porttitor</li>
+                        </ol>
+                    </div>
+                );
+            }
+        }
+
+        class ContactCompoent extends React.Component {
+            render() {
+                return (
+                    <div className="content">
+                        <h2>GOT QUESTIONS?</h2>
+                        <p>The easiest thing to do is post on our <a href="http://forum.kirupa.com">forums</a></p>
+                    </div>
+                );
+            }
+        }
+
+        class HeaderComponent extends React.Component {
+            render() {
+                return (
+                    <div>
+                        <h1>Simple SPA</h1>
+                        <ul className="header">
+                            <li><NavLink exact to="/" activeClassName="active">Home</NavLink></li>
+                            <li><NavLink to="/stuff" activeClassName="active">Stuff</NavLink></li>
+                            <li><NavLink to="/contact" activeClassName="active">Contact</NavLink></li>
+                        </ul>
+                    </div>
+                );
+            }
+        }
+
+        class AppFrameComponent extends React.Component {
+            render() {
+                return (
+                    <BrowserRouter>
+                        <div>
+                            <HeaderComponent/>
+                            <Route exact path="/" component={HomeComponent}/>
+                            <Route path="/stuff" component={StuffComponent}/>
+                            <Route path="/contact" component={ContactCompoent}/>
+                        </div>
+                    </BrowserRouter>
+                );
+            }
+        }
+
+        ReactDOM.render(
+            <AppFrameComponent/>,
+            document.querySelector("#container")
+        );
+    </script>
 </head>
 <body>
+<div id="container"></div>
 </body>
 </html>
