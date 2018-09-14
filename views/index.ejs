@@ -8,9 +8,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router/2.8.1/react-router.min.js"></script>
 
     <script type="text/babel">
+        class AppFrameComponent extends React.Component {
+            render() {
+                return (
+                    <div>
+                        <h1>Simple SPA</h1>
+                        <ul className="header">
+                            <li>Home</li>
+                            <li>Stuff</li>
+                            <li>Contact</li>
+                        </ul>
+                        <div className="content">
+                        </div>
+                    </div>
+                );
+            }
+        }
+
         ReactDOM.render(
             <div>
-                Hello
+                <AppFrameComponent/>
             </div>,
             document.querySelector("#container")
         );
